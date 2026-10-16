@@ -27,8 +27,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          python -m pip install flake8
 
-      # TODO: Add flake8 linting here
+      - name: flake9 linting
+        run: |
+          flake8 .
 
 
   package:
@@ -39,4 +42,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # TODO: Zip the application here
+      - name: Create Application Zip
+        run: |
+          zip -r application.zip . \
+            -x "*.git" \
+            -x "__pycache__/*" \
+            -x "*.pyc"
+
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: application-package
+          path: application.zip
+           
+
