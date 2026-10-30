@@ -32,13 +32,13 @@ jobs:
       - name: flake9 linting
         run: |
           flake8 .
-test:
-  runs-on: ubuntu-latest
-  needs: test
-
-  package:
+  test:
     runs-on: ubuntu-latest
-    needs: test
+    needs: analyse
+
+    package:
+      runs-on: ubuntu-latest
+      needs: test
 
     steps:
       - name: Checkout repository
