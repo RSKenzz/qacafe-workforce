@@ -36,9 +36,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: analyse
 
-    package:
-      runs-on: ubuntu-latest
-      needs: test
+  package:
+    runs-on: ubuntu-latest
+    needs: test
 
     steps:
       - name: Checkout repository
