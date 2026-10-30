@@ -32,8 +32,8 @@ jobs:
       - name: flake9 linting
         run: |
           flake8 .
-test:
-  runs-on: ubuntu-latest
+  test:
+    runs-on: ubuntu-latest
 
   package:
     runs-on: ubuntu-latest
